@@ -7,11 +7,7 @@ RUN apt-get update && \
     apt-get -yq autoremove && \
     apt-get clean && \
     rm -rf /var/lib/{apt,dpkg,cache,log}
-RUN curl -s -LO http://get-simple.info/data/uploads/releases/GetSimpleCMS-$GETSIMPLE_VERSION.zip && \
-    unzip GetSimpleCMS-$GETSIMPLE_VERSION.zip && \
-    mv GetSimpleCMS-$GETSIMPLE_VERSION/* . && \
-    rm -rf GetSimpleCMS-$GETSIMPLE_VERSION.zip GetSimpleCMS-$GETSIMPLE_VERSION/ && \
-    mv $PHP_INI_DIR/php.ini-development $PHP_INI_DIR/php.ini && \
+RUN mv $PHP_INI_DIR/php.ini-development $PHP_INI_DIR/php.ini && \
     docker-php-ext-configure gd \
         --with-freetype=/usr/lib/ \
         --with-jpeg=/usr/lib/ && \
